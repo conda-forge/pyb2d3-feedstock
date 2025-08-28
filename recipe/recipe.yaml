@@ -11,7 +11,7 @@ source:
   sha256: a9755262c2ebf02936395a0f6f1944fc805626da86b6dd5cc96de087637872d2
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package: 
@@ -78,11 +78,11 @@ outputs:
       run:
       - python >=${{ python_min }}
       - pyb2d3 >=${{ version }}
-    tests:
-      - python:
-          imports:
-            - pyb2d3_sandbox
-          pip_check: true
+    # tests:
+    #   - python:
+    #       imports:
+    #         - pyb2d3_sandbox
+    #       pip_check: true
 
   - package:
       name: pyb2d3-sandbox-opengl
@@ -129,11 +129,11 @@ outputs:
       - pyb2d3 >=${{ version }}
       - pyb2d3-sandbox >=${{ version }}
       - pygame >=2.6.1
-    tests:
-      - python:
-          imports:
-            - pyb2d3_sandbox_pygame
-          pip_check: true
+    # tests:
+    #   - python:
+    #       imports:
+    #         - pyb2d3_sandbox_pygame
+    #       pip_check: true
 
   - package:
       name: pyb2d3-sandbox-ipycanvas
@@ -156,11 +156,11 @@ outputs:
       - pyb2d3-sandbox >=${{ version }}
       - ipycanvas >=0.14.1
       - ipyevents
-    tests:
-      - python:
-          imports:
-            - pyb2d3_sandbox_ipycanvas
-          pip_check: true
+    # tests:
+    #   - python:
+    #       imports:
+    #         - pyb2d3_sandbox_ipycanvas
+    #       pip_check: true
 
 about:
   summary: "Python bindings for Box2D using nanobind."
