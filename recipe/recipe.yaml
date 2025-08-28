@@ -70,16 +70,17 @@ outputs:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox -vv 
     requirements:
       build:
-      - python
-      - pip
+      build:
       - if: build_platform != target_platform
         then:
+          - pip
+          - python
           - cross-python_${{ target_platform }} 
           - setuptools
       host:
-      - python 
       - if: build_platform == target_platform
         then:
+          - python ${{ python_min }}.*
           - setuptools
           - pip
       run:
@@ -100,16 +101,16 @@ outputs:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_opengl -vv 
     requirements:
       build:
-      - python
-      - pip
       - if: build_platform != target_platform
         then:
+          - pip
+          - python
           - cross-python_${{ target_platform }} 
           - setuptools
       host:
-      - python
       - if: build_platform == target_platform
         then:
+          - python ${{ python_min }}.*
           - setuptools
           - pip
       run:
@@ -132,16 +133,16 @@ outputs:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_pygame -vv 
     requirements:
       build:
-      - python
-      - pip
       - if: build_platform != target_platform
         then:
+          - pip
+          - python
           - cross-python_${{ target_platform }} 
           - setuptools
       host:
-      - python ${{ python_min }}.*
       - if: build_platform == target_platform
         then:
+          - python ${{ python_min }}.*
           - setuptools
           - pip
       run:
@@ -164,16 +165,16 @@ outputs:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_ipycanvas -vv 
     requirements:
       build:
-      - python
-      - pip
       - if: build_platform != target_platform
         then:
+          - pip
+          - python
           - cross-python_${{ target_platform }} 
           - setuptools
       host:
-      - python  ${{ python_min }}.*
       - if: build_platform == target_platform
         then:
+          - python ${{ python_min }}.*
           - setuptools
           - pip
       run:
