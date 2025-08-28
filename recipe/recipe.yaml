@@ -1,6 +1,6 @@
 context:
   name: pyb2d3
-  version: "0.7.3"
+  version: "0.7.4"
 
 recipe:
   name: pyb2d3
@@ -8,25 +8,25 @@ recipe:
 
 source:
   url: https://github.com/DerThorsten/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 0924a11c4ec5c3a96a62bf8a6d545ade53bb14e7956ca9ba48a7b6ed8969e855
+  sha256: 9e78a4f9496855a3588becfb62855689c0ce4dce40359420299fa6f1d29c811a
 
 build:
-  number: 1
+  number: 0
 
 outputs:
-  - package: 
+  - package:
       name: pyb2d3
       version: ${{ version }}
 
     build:
       script: ${{ PYTHON }} -m pip install . --no-deps -vv  --config-settings=cmake.define.FETCH_BOX2D=OFF --config-settings=cmake.define.Python_EXECUTABLE=${{ PYTHON }}
-    
+
     requirements:
       build:
         - if: build_platform != target_platform
           then:
             - python
-            - cross-python_${{ target_platform }} 
+            - cross-python_${{ target_platform }}
             - numpy
             - scikit-build-core
             - pip
@@ -66,17 +66,17 @@ outputs:
     build:
       noarch: python
       script:
-      - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox -vv 
+        - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox -vv
     requirements:
       build:
         - python
         - pip
         - if: build_platform != target_platform
           then:
-            - cross-python_${{ target_platform }} 
-            - setuptools  
+            - cross-python_${{ target_platform }}
+            - setuptools
       host:
-        - python 
+        - python
         - if: build_platform == target_platform
           then:
             - setuptools
@@ -96,14 +96,14 @@ outputs:
     build:
       noarch: python
       script:
-      - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_opengl -vv 
+        - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_opengl -vv
     requirements:
       build:
         - if: build_platform != target_platform
           then:
             - pip
             - python
-            - cross-python_${{ target_platform }} 
+            - cross-python_${{ target_platform }}
             - setuptools
       host:
         - if: build_platform == target_platform
@@ -127,15 +127,15 @@ outputs:
       version: ${{ version }}
     build:
       noarch: python
-      script:   
-      - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_pygame -vv 
+      script:
+        - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_pygame -vv
     requirements:
       build:
         - if: build_platform != target_platform
           then:
             - pip
             - python
-            - cross-python_${{ target_platform }} 
+            - cross-python_${{ target_platform }}
             - setuptools
       host:
         - if: build_platform == target_platform
@@ -160,27 +160,27 @@ outputs:
     build:
       noarch: python
       script:
-      - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_ipycanvas -vv 
+        - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_ipycanvas -vv
     requirements:
       build:
-      - if: build_platform != target_platform
-        then:
-          - pip
-          - python
-          - cross-python_${{ target_platform }} 
-          - setuptools
+        - if: build_platform != target_platform
+          then:
+            - pip
+            - python
+            - cross-python_${{ target_platform }}
+            - setuptools
       host:
-      - if: build_platform == target_platform
-        then:
-          - python ${{ python_min }}.*
-          - setuptools
-          - pip
+        - if: build_platform == target_platform
+          then:
+            - python ${{ python_min }}.*
+            - setuptools
+            - pip
       run:
-      - python >=${{ python_min }}
-      - pyb2d3 >=${{ version }}
-      - pyb2d3-sandbox >=${{ version }}
-      - ipycanvas >=0.14.1
-      - ipyevents
+        - python >=${{ python_min }}
+        - pyb2d3 >=${{ version }}
+        - pyb2d3-sandbox >=${{ version }}
+        - ipycanvas >=0.14.1
+        - ipyevents
     tests:
       - python:
           imports:
