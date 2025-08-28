@@ -23,7 +23,6 @@ outputs:
     
     requirements:
       build:
-        
         - if: build_platform != target_platform
           then:
             - python
@@ -70,22 +69,21 @@ outputs:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox -vv 
     requirements:
       build:
-      build:
-      - if: build_platform != target_platform
-        then:
-          - pip
-          - python
-          - cross-python_${{ target_platform }} 
-          - setuptools
+        - python
+        - pip
+        - if: build_platform != target_platform
+          then:
+            - cross-python_${{ target_platform }} 
+            - setuptools  
       host:
-      - if: build_platform == target_platform
-        then:
-          - python ${{ python_min }}.*
-          - setuptools
-          - pip
+        - python 
+        - if: build_platform == target_platform
+          then:
+            - setuptools
+            - pip
       run:
-      - python >=${{ python_min }}
-      - pyb2d3 >=${{ version }}
+        - python >=${{ python_min }}
+        - pyb2d3 >=${{ version }}
     tests:
       - python:
           imports:
@@ -101,24 +99,24 @@ outputs:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_opengl -vv 
     requirements:
       build:
-      - if: build_platform != target_platform
-        then:
-          - pip
-          - python
-          - cross-python_${{ target_platform }} 
-          - setuptools
+        - if: build_platform != target_platform
+          then:
+            - pip
+            - python
+            - cross-python_${{ target_platform }} 
+            - setuptools
       host:
-      - if: build_platform == target_platform
-        then:
-          - python ${{ python_min }}.*
-          - setuptools
-          - pip
+        - if: build_platform == target_platform
+          then:
+            - python ${{ python_min }}.*
+            - setuptools
+            - pip
       run:
-      - python >=${{ python_min }}
-      - pyb2d3 >=${{ version }}
-      - pyb2d3-sandbox >=${{ version }}
-      - pyopengl >=3.1.9
-      - imgui-bundle >=1.92.0
+        - python >=${{ python_min }}
+        - pyb2d3 >=${{ version }}
+        - pyb2d3-sandbox >=${{ version }}
+        - pyopengl >=3.1.9
+        - imgui-bundle >=1.92.0
     tests:
       - python:
           imports:
@@ -129,27 +127,27 @@ outputs:
       version: ${{ version }}
     build:
       noarch: python
-      script:
+      script:   
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_pygame -vv 
     requirements:
       build:
-      - if: build_platform != target_platform
-        then:
-          - pip
-          - python
-          - cross-python_${{ target_platform }} 
-          - setuptools
+        - if: build_platform != target_platform
+          then:
+            - pip
+            - python
+            - cross-python_${{ target_platform }} 
+            - setuptools
       host:
-      - if: build_platform == target_platform
-        then:
-          - python ${{ python_min }}.*
-          - setuptools
-          - pip
+        - if: build_platform == target_platform
+          then:
+            - python ${{ python_min }}.*
+            - setuptools
+            - pip
       run:
-      - python
-      - pyb2d3 >=${{ version }}
-      - pyb2d3-sandbox >=${{ version }}
-      - pygame >=2.6.1
+        - python
+        - pyb2d3 >=${{ version }}
+        - pyb2d3-sandbox >=${{ version }}
+        - pygame >=2.6.1
     tests:
       - python:
           imports:
