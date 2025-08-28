@@ -77,7 +77,7 @@ outputs:
           - cross-python_${{ target_platform }} 
           - setuptools
       host:
-      - python ${{ python_min }}.*
+      - python 
       - if: build_platform == target_platform
         then:
           - setuptools
@@ -107,7 +107,7 @@ outputs:
           - cross-python_${{ target_platform }} 
           - setuptools
       host:
-      - python ${{ python_min }}.*
+      - python
       - if: build_platform == target_platform
         then:
           - setuptools
@@ -145,7 +145,7 @@ outputs:
           - setuptools
           - pip
       run:
-      - python >=${{ python_min }}
+      - python
       - pyb2d3 >=${{ version }}
       - pyb2d3-sandbox >=${{ version }}
       - pygame >=2.6.1
