@@ -72,10 +72,16 @@ outputs:
       build:
       - python
       - pip
+      - if: build_platform != target_platform
+        then:
+          - cross-python_${{ target_platform }} 
+          - setuptools
       host:
       - python ${{ python_min }}.*
-      - pip
-      - setuptools
+      - if: build_platform == target_platform
+        then:
+          - setuptools
+          - pip
       run:
       - python >=${{ python_min }}
       - pyb2d3 >=${{ version }}
@@ -93,11 +99,19 @@ outputs:
       script:
       - ${{ PYTHON }} -m pip install companion_packages/pyb2d3_sandbox_opengl -vv 
     requirements:
-
+      build:
+      - python
+      - pip
+      - if: build_platform != target_platform
+        then:
+          - cross-python_${{ target_platform }} 
+          - setuptools
       host:
       - python ${{ python_min }}.*
-      - pip
-      - setuptools
+      - if: build_platform == target_platform
+        then:
+          - setuptools
+          - pip
       run:
       - python >=${{ python_min }}
       - pyb2d3 >=${{ version }}
@@ -120,10 +134,16 @@ outputs:
       build:
       - python
       - pip
+      - if: build_platform != target_platform
+        then:
+          - cross-python_${{ target_platform }} 
+          - setuptools
       host:
       - python ${{ python_min }}.*
-      - pip
-      - setuptools
+      - if: build_platform == target_platform
+        then:
+          - setuptools
+          - pip
       run:
       - python >=${{ python_min }}
       - pyb2d3 >=${{ version }}
@@ -146,10 +166,16 @@ outputs:
       build:
       - python
       - pip
+      - if: build_platform != target_platform
+        then:
+          - cross-python_${{ target_platform }} 
+          - setuptools
       host:
       - python  ${{ python_min }}.*
-      - pip
-      - setuptools
+      - if: build_platform == target_platform
+        then:
+          - setuptools
+          - pip
       run:
       - python >=${{ python_min }}
       - pyb2d3 >=${{ version }}
