@@ -1,6 +1,6 @@
 context:
   name: pyb2d3
-  version: "0.8.0"
+  version: "0.12.0"
 
 recipe:
   name: pyb2d3
@@ -8,7 +8,7 @@ recipe:
 
 source:
   url: https://github.com/DerThorsten/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 68fe17260d412257cbb0360c9ab769640fcd87f0407321905bc578beb6a6039f
+  sha256: 98b7726a4f8c353b870ef1404af60e8f1dbe1e15a20101e5bfa41f90a1f76ce9
 
 build:
   number: 0
